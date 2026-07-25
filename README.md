@@ -2,7 +2,7 @@
 
 **A dashboard for the German Werkstudent and junior tech market that publishes its own error rates.**
 
-Live: _(add Streamlit Cloud URL)_
+**Live: https://job-pulse-de-aamirabbas.streamlit.app**
 
 Most job-market dashboards ask a language model to read postings and then present
 whatever it returns as fact. This one measures how often the model is wrong, per
