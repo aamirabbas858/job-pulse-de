@@ -1,0 +1,12 @@
+venv/
+.env
+__pycache__/
+*.pyc
+.DS_Store
+*.tmp
+data/*.db
+
+# The published snapshot is data/cache.json, written by scripts/prepare_release.py
+# with full posting text stripped. The working cache written by the app itself
+# contains ~0.8 MB of scraped description text that is not ours to redistribute.
+data/cache.raw.json

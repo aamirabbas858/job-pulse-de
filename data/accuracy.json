@@ -1,0 +1,31 @@
+{
+  "n_labelled": 22,
+  "n_predicted": 22,
+  "n_sampled": 51,
+  "n_out_of_scope": 7,
+  "off_topic_pct": 14,
+  "is_realistic_for_student": {
+    "precision": 1.0,
+    "recall": 0.923,
+    "f1": 0.96,
+    "tp": 12,
+    "fp": 0,
+    "fn": 1,
+    "accuracy": 0.955
+  },
+  "salary_mentioned": {
+    "precision": 0.5,
+    "recall": 0.2,
+    "f1": 0.286,
+    "tp": 1,
+    "fp": 1,
+    "fn": 4,
+    "accuracy": 0.773
+  },
+  "experience_years": {
+    "mae": 0.64,
+    "exact_match": 0.682,
+    "n": 22
+  },
+  "skills_withheld_reason": "Labelling UI reused one Streamlit widget across postings, so skill selections carried between rows. 15 of 22 skill lists were contaminated. Widget keys fixed; remeasurement pending. Validated separately: truncation at 1600 chars discarded 34% of skill mentions (n=60 live postings), now raised to 6000."
+}

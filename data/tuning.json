@@ -1,0 +1,42 @@
+{
+  "baseline": {
+    "precision": 0.816,
+    "recall": 0.174,
+    "f1": 0.287,
+    "parsed": 22,
+    "chars": 1600,
+    "batch": 8
+  },
+  "full text only": {
+    "precision": 0.812,
+    "recall": 0.292,
+    "f1": 0.43,
+    "parsed": 22,
+    "chars": 6000,
+    "batch": 8
+  },
+  "full + new prompt": {
+    "precision": 0.768,
+    "recall": 0.298,
+    "f1": 0.429,
+    "parsed": 22,
+    "chars": 6000,
+    "batch": 8
+  },
+  "full + new + grouped": {
+    "precision": 0.757,
+    "recall": 0.298,
+    "f1": 0.427,
+    "parsed": 22,
+    "chars": 6000,
+    "batch": 8
+  },
+  "grouped, one at a time": {
+    "precision": 0.658,
+    "recall": 0.306,
+    "f1": 0.418,
+    "parsed": 20,
+    "chars": 6000,
+    "batch": 1
+  }
+}

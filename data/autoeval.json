@@ -1,0 +1,26 @@
+{
+  "field": "salary_mentioned",
+  "basis": "source-stated (Bundesagentur verguetungsangabe, Adzuna unpredicted salary)",
+  "n": 176,
+  "positives_in_truth": 12,
+  "precision": 0.375,
+  "recall": 0.25,
+  "f1": 0.3,
+  "accuracy": 0.92,
+  "confusion": {
+    "tp": 3,
+    "fp": 5,
+    "fn": 9,
+    "tn": 159
+  },
+  "by_source": {
+    "Adzuna": {
+      "agreement": 0.942,
+      "n": 121
+    },
+    "Bundesagentur": {
+      "agreement": 0.873,
+      "n": 55
+    }
+  }
+}
