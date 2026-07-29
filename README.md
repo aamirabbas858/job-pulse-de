@@ -81,6 +81,14 @@ Measured two ways: skills F1 rose 0.287 → 0.430 against hand labels, and
 independently of any labelling, 34% of vocabulary terms across 60 live postings
 had been sitting past the cutoff.
 
+Those two numbers are a *comparison*, not a score, which is why the table above
+still withholds skills F1. They come from `src/tune.py`, which ran every variant
+against the same hand labels — the ones the labelling tool contaminated. Shared
+noise cancels when you are ranking variants against each other, so 0.287 → 0.430
+is sound as a before-and-after. It would not be sound as an answer to "how good
+is skill extraction", and that question stays unanswered until the labels are
+redone. `data/tuning.json` has the full table.
+
 Notably, the prompt rewrite that accompanied the fix made things *worse* —
 precision fell 0.812 → 0.768 for no recall gain. The boring constant was the
 entire win. See `src/tune.py`, which compares prompt variants and prints the table.
