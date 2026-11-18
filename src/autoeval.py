@@ -11,7 +11,7 @@ accuracy measurement that costs no human labelling. Run:
     python src/autoeval.py
 
 Fields needing human judgement (skills, experience) are not
-covered here — use label_app.py for those.
+covered here - use label_app.py for those.
 """
 import os
 import sys

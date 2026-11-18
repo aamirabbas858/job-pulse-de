@@ -6,7 +6,7 @@
 
 Most job-market dashboards ask a language model to read postings and then present
 whatever it returns as fact. This one measures how often the model is wrong, per
-field, and shows those numbers next to the findings — including the ones that make
+field, and shows those numbers next to the findings - including the ones that make
 the pipeline look bad.
 
 ---
@@ -19,7 +19,7 @@ excluding 7 off-topic, 1 with too little text, and 32 the model failed to parse
 
 | | |
 |---|---|
-| **60%** | of postings are realistic for a CS student with 0–2 years. Skewed high by construction — the queries target Werkstudent and junior roles. |
+| **60%** | of postings are realistic for a CS student with 0–2 years. Skewed high by construction - the queries target Werkstudent and junior roles. |
 | **10%** | state actual pay, across the 321 postings whose source publishes a compensation field. Read from that field, not inferred by the model. |
 | **6%** | of postings fail to parse and are excluded rather than counted as passes. |
 
@@ -32,7 +32,7 @@ ground truth rather than assumed.
 
 | Field | F1 | Basis |
 |---|---|---|
-| `salary_mentioned` | **0.30** | 176 postings, scored against the boards' own structured field — no human labelling |
+| `salary_mentioned` | **0.30** | 176 postings, scored against the boards' own structured field - no human labelling |
 | `salary_mentioned` | **0.29** | 22 hand-labelled postings |
 | `is_realistic_for_student` | **0.96** | 22 hand-labelled postings |
 | `experience_years` | MAE 0.64 yrs | 22 hand-labelled postings |
@@ -53,13 +53,13 @@ compensation field instead of from the model.** Bundesagentur returns
 `salary_is_predicted` flag. Both are publisher-stated, so checking the model
 against them costs no human labelling and gives a genuinely independent measure.
 
-Two methods — 176 auto-scored postings and 22 hand-labelled ones — independently
+Two methods - 176 auto-scored postings and 22 hand-labelled ones - independently
 agree the field is weak (0.30 and 0.29). Different data, different scoring
 procedure, near-identical answer.
 
 ## What was found by measuring, and fixed
 
-**Descriptions were truncated mid-requirements — and it corrupted a headline
+**Descriptions were truncated mid-requirements - and it corrupted a headline
 number, not just the skills.** German postings put requirements last (*"Dein
 Profil"*, *"Was du mitbringst"*), and the pipeline cut them at 1600 characters.
 **42%** of skill mentions fell past the cutoff.
@@ -73,7 +73,7 @@ Raising the limit to 6000 changed the output substantially:
 | `salary_mentioned` F1 (independent) | 0.18 | **0.30** |
 
 The student-realistic figure is the one that matters. It was not a market finding
-at 84% — the model simply could not see the experience requirements it was being
+at 84% - the model simply could not see the experience requirements it was being
 asked to judge, so it defaulted to permissive. A 24-point error in the headline
 statistic, caused by a constant.
 
@@ -83,20 +83,20 @@ had been sitting past the cutoff.
 
 Those two numbers are a *comparison*, not a score, which is why the table above
 still withholds skills F1. They come from `src/tune.py`, which ran every variant
-against the same hand labels — the ones the labelling tool contaminated. Shared
+against the same hand labels - the ones the labelling tool contaminated. Shared
 noise cancels when you are ranking variants against each other, so 0.287 → 0.430
 is sound as a before-and-after. It would not be sound as an answer to "how good
 is skill extraction", and that question stays unanswered until the labels are
 redone. `data/tuning.json` has the full table.
 
-Notably, the prompt rewrite that accompanied the fix made things *worse* —
+Notably, the prompt rewrite that accompanied the fix made things *worse* -
 precision fell 0.812 → 0.768 for no recall gain. The boring constant was the
 entire win. See `src/tune.py`, which compares prompt variants and prints the table.
 
 **The labelling tool was corrupting its own ground truth.** Streamlit reuses a
 widget across reruns unless given an explicit `key`, so skill selections carried
 from one posting to the next. The tell: **120 of 128 apparent model misses were
-skills absent from the posting text entirely** — a model doesn't fail that way, so
+skills absent from the posting text entirely** - a model doesn't fail that way, so
 the labels had to be wrong. 15 of 22 skill lists were affected. Widget keys are
 now row-scoped, and the skills metric is withheld rather than published from
 contaminated data.
@@ -114,7 +114,7 @@ scanned, instead of ~40 mostly irrelevant ones.
 
 **Bundesagentur's search endpoint returns titles only.** Descriptions averaged 53
 characters, so the model received a job title with no content and returned defaults
-for everything — which is what produced an earlier "100% student-realistic" reading.
+for everything - which is what produced an earlier "100% student-realistic" reading.
 Full text lives at an undocumented `v4/jobdetails/{base64(refnr)}` endpoint, fetched
 in parallel. Descriptions went from 53 to ~2800 characters.
 
@@ -135,7 +135,7 @@ postings and was removed rather than left in to pad the source count.
 - The sample comes from Werkstudent and junior queries. It describes that slice, not the German tech market as a whole.
 - Human labelling is **n=22**. Small, and the hand-labelled scores in the table were measured before the truncation fix; the independent salary score was re-run after it.
 - Deduplication matches on title + company, so one role advertised under two titles counts twice.
-- Off-topic postings (sales, marketing, production planning) leak in through fuzzy search — about 4% after filtering, excluded from all rates and counted.
+- Off-topic postings (sales, marketing, production planning) leak in through fuzzy search - about 4% after filtering, excluded from all rates and counted.
 - Three APIs is not every job board.
 
 ## Running it
@@ -150,7 +150,7 @@ streamlit run app.py
 ### Measuring accuracy yourself
 
 ```bash
-python src/autoeval.py                      # no labelling needed — scores salary
+python src/autoeval.py                      # no labelling needed - scores salary
                                             # against the boards' own fields
 python src/groundtruth.py sample --n 51     # build a labelling set
 streamlit run label_app.py                  # label it
@@ -181,4 +181,4 @@ Python · Streamlit · Gemini · Plotly · D3 · Adzuna / Bundesagentur für Arb
 
 ---
 
-Built by [Abbas Aamir](https://www.linkedin.com/in/abbas-aamir-474969353/) — CS undergraduate in Berlin.
+Built by [Abbas Aamir](https://www.linkedin.com/in/abbas-aamir-474969353/) - CS undergraduate in Berlin.

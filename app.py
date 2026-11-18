@@ -43,7 +43,7 @@ def esc(v) -> str:
 
 
 def safe_url(u) -> str:
-    """Allow only http(s) — a posting URL of javascript:... must not become a link."""
+    """Allow only http(s) - a posting URL of javascript:... must not become a link."""
     u = str(u or "").strip()
     return u if u.startswith(("http://", "https://")) else ""
 

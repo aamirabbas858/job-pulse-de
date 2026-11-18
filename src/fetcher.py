@@ -155,7 +155,7 @@ def _ba_detail(refnr: str) -> dict:
         verg = d.get("verguetungsangabe")
         return {
             "description":   _clean(d.get("stellenangebotsBeschreibung") or ""),
-            # BA states this explicitly — no inference needed.
+            # BA states this explicitly - no inference needed.
             "salary_stated": bool(verg) and verg != "KEINE_ANGABEN",
             "external_url":  d.get("externeURL") or "",
         }

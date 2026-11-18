@@ -1,7 +1,7 @@
 """Produce the cache snapshot that ships with the repo.
 
 The working cache holds the full text of every posting because the analyser
-needs it. The dashboard does not — it renders title, company, location, skills
+needs it. The dashboard does not - it renders title, company, location, skills
 and URL only. Publishing ~0.8 MB of scraped description text would redistribute
 content belonging to the job boards, so it is stripped here.
 

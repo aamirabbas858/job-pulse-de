@@ -4,7 +4,7 @@
 
 Skills come pre-filled from the model because retyping them is pure tedium and
 an omission is obvious once the posting is on screen next to the list. The two
-judgement fields are deliberately NOT pre-filled — a pre-ticked box gets
+judgement fields are deliberately NOT pre-filled - a pre-ticked box gets
 rubber-stamped, and that would quietly inflate the very numbers this exists to
 verify. Every save records whether you changed the model's skill list.
 
